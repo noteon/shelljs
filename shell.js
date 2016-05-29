@@ -106,6 +106,11 @@ exports.which = common.wrap('which', _which);
 var _echo = require('./src/echo');
 exports.echo = common.wrap('echo', _echo);
 
+
+//@include ./src/mktemp
+var _mktemp = require('./src/mktemp');
+exports.mktemp = common.wrap('mktemp', _mktemp, {idx: 1});
+
 //@include ./src/dirs
 var _dirs = require('./src/dirs').dirs;
 exports.dirs = common.wrap('dirs', _dirs, {idx: 1});
