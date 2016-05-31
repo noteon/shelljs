@@ -322,7 +322,8 @@ function wrap(cmd, fn, options) {
         // If state.error hasn't been set it's an error thrown by Node, not us - probably a bug...
         console.error('ShellJS: internal error');
         console.error(e.stack || e);
-        process.exit(1);
+        throw e;
+        //process.exit(1);
       }
       if (config.fatal)
         throw e;

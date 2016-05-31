@@ -1,7 +1,7 @@
 {
-  "name": "shelljs",
+  "name": "mb-shelljs",
   "version": "0.7.0",
-  "description": "Portable Unix shell commands for Node.js",
+  "description": "Portable Unix shell commands for Node.js, modified by mb, remove process.exit",
   "keywords": [
     "shelljs",
     "bash",
@@ -14,14 +14,15 @@
   ],
   "contributors": [
     "Ari Porad <ari@ariporad.com> (http://ariporad.com/)",
-    "Nate Fischer <ntfschr@gmail.com> (https://github.com/nfischer)"
+    "Nate Fischer <ntfschr@gmail.com> (https://github.com/nfischer)",
+    "noteon <noteon@gmail.com> (https://github.com/noteon)"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/shelljs/shelljs.git"
+    "url": "git://github.com/noteon/shelljs.git"
   },
   "license": "BSD-3-Clause",
-  "homepage": "http://github.com/shelljs/shelljs",
+  "homepage": "http://github.com/noteon/shelljs",
   "main": "./shell.js",
   "scripts": {
     "test": "node scripts/run-tests",
