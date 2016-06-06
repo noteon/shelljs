@@ -81,8 +81,8 @@ function execSync(cmd, opts, pipe) {
       (pipe ? "\nchildProcess.stdin.end("+JSON.stringify(pipe)+");\n" : '\n') +
       [
         "var stdoutEnded = false, stderrEnded = false;",
-        "function tryClosingStdout(){ if(stdoutEnded){ stdoutStream.end(); } }",
-        "function tryClosingStderr(){ if(stderrEnded){ stderrStream.end(); } }",
+        "function tryClosingStdout(){ if(stdoutEnded){ stdoutStream.end(); if (stdoutEnded && stderrEnded) process.exit(0) } }",
+        "function tryClosingStderr(){ if(stderrEnded){ stderrStream.end(); if (stdoutEnded && stderrEnded) process.exit(0) } }",
         "childProcess.stdout.on('end', function(){ stdoutEnded = true; tryClosingStdout(); });",
         "childProcess.stderr.on('end', function(){ stderrEnded = true; tryClosingStderr(); });"
       ].join('\n');
