@@ -62,6 +62,12 @@ function execSync(cmd, opts, pipe) {
   var script;
 
   opts.cwd = path.resolve(opts.cwd);
+  
+  //why? sh -c, there is no /usr/local/bin,  node && npm -g locate /usr/local/bin 
+  if (process.platform!=="win32" && (opts.env.PATH.indexOf(":/usr/local/bin")<0))
+      opts.env.PATH+=":/usr/local/bin";
+  
+  
   var optString = JSON.stringify(opts);
 
   if (typeof child.execSync === 'function') {
@@ -95,10 +101,6 @@ function execSync(cmd, opts, pipe) {
       opts.stdio = [0, 1, 2];
     }
    
-   //why? sh -c, there is no /usr/local/bin,  node && npm -g locate /usr/local/bin 
-   if (process.platform!=="win32")
-      opts.env.PATH+=":/usr/local/bin";
-
     // Welcome to the future
     try {
       child.execSync(execCommand, opts);
