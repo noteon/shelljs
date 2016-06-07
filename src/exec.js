@@ -94,6 +94,10 @@ function execSync(cmd, opts, pipe) {
     } else {
       opts.stdio = [0, 1, 2];
     }
+   
+   //why? sh -c, there is no /usr/local/bin,  node && npm -g locate /usr/local/bin 
+   if (process.platform!=="win32")
+      opts.env.PATH+=":/usr/local/bin";
 
     // Welcome to the future
     try {
